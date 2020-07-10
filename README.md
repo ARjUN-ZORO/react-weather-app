@@ -15,5 +15,5 @@ To run the app `npm start`
 ##### Note: No need to add your openweathermap API key
 
 ## Screenshots
-![](https://github.com/ARjUN-ZORO/react-weather-app/blob/master/Screenshot.PNG)
+![](https://github.com/ARjUN-ZORO/react-weather-app/blob/master/Screenshot_2020-07-10%20React%20App(2).jpg)
 ![](https://github.com/ARjUN-ZORO/react-weather-app/blob/master/Screenshot.PNG)
