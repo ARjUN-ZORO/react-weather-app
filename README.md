@@ -1,4 +1,4 @@
-#React Weather App
+# React Weather App
 
 A simple Weather App which uses [openweathermap](http:/https://openweathermap.org// "openweathermap") API to fetch Weather information.
 
@@ -13,3 +13,7 @@ Install the required dependencies `npm install`
 Once it is done you can start using the app
 To run the app `npm start`
 ##### Note: No need to add your openweathermap API key
+
+## Screenshots
+![](https://github.com/ARjUN-ZORO/react-weather-app/blob/master/Screenshot.PNG)
+![](https://github.com/ARjUN-ZORO/react-weather-app/blob/master/Screenshot.PNG)
