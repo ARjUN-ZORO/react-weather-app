@@ -1,5 +1,5 @@
 # React Weather App
-## Click here to ![--> Try it out <--](https://frozen-dawn-35908.herokuapp.com/)
+## Click here to [--> Try it out <--](https://frozen-dawn-35908.herokuapp.com/)
 
 A simple Weather App which uses [openweathermap](http:/https://openweathermap.org// "openweathermap") API to fetch Weather information.
 
