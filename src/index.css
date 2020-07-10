@@ -1,13 +1,433 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+* {
+  box-sizing: border-box;
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Montserrat", sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  min-height: 100vh;
+  margin: 0 15px;
+  position: relative;
+}
+@media (min-width: 768px) {
+  body {
+    margin: 0 20px;
+    padding: 0;
+  }
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  padding: 7px;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url("./night.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.root {
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+.AppTitle {
+  display: block;
+  height: 64px;
+  margin: 0;
+  padding: 20px 0;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 200;
+  color: #ffffff;
+  transition: 0.3s 1.4s;
+  opacity: 1;
+}
+.secondary {
+  opacity: 1;
+  height: auto;
+  position: relative;
+  padding: 20px 0;
+  font-size: 30px;
+  top: 20%;
+  text-align: center;
+  transition: 0.5s;
+}
+@media (min-width: 320px) {
+  .AppTitle {
+    font-size: 22px;
+  }
+}
+@media (min-width: 525px) {
+  .AppTitle {
+    font-size: 40px;
+  }
+}
+@media (min-width: 1024px) {
+  .AppTitle {
+    font-size: 50px;
+  }
+}
+@media (min-width: 2560px) {
+  .AppTitle {
+    font-size: 60px;
+  }
+}
+.WeatherWrapper {
+  max-width: 1500px;
+  margin: 0 auto;
+  height: calc(100vh - 64px);
+  width: 100%;
+  position: relative;
+}
+.SearchBar {
+  top: 15%;
+  position: relative;
+  margin: 0 auto;
+  max-width: 500px;
+  transition: 0.8s 0.5s;
+}
+@media (min-width: 320px) {
+  .SearchBar {
+    max-width: 300px;
+  }
+}
+@media (min-width: 768px) {
+  .SearchBar {
+    max-width: 600px;
+  }
+}
+@media (min-width: 1440px) {
+  .SearchBar {
+    max-width: 700px;
+  }
+}
+.SearchInput {
+  width: 100%;
+  border: none;
+  background-color: #ffffff;
+  font-size: 16px;
+  padding: 10px 15px 10px 40px;
+  color: #c5c5c5;
+  transition: 0.2s;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.SearchInput:focus {
+  color: #191919;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  outline: none;
+}
+@media (min-width: 768px) {
+  .SearchInput {
+    font-size: 18px;
+  }
+}
+@media (min-width: 1440px) {
+  .SearchInput {
+    padding: 15px 20px 15px 45px;
+    border-radius: 30px;
+  }
+}
+.SearchIcon {
+  display: block;
+  position: absolute;
+  top: 60%;
+  left: 22px;
+  transform: translate(-50%, -50%);
+  height: 14px;
+  width: 14px;
+  font-size: 14px;
+  color: #c5c5c5;
+}
+@media (min-width: 768px) {
+  .SearchIcon {
+    height: 15px;
+    width: 15px;
+    font-size: 15px;
+  }
+}
+@media (min-width: 1024px) {
+  .SearchIcon {
+    height: 16px;
+    width: 16px;
+    font-size: 16px;
+  }
+}
+.Results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /* padding: 40px; */
+  opacity: 0;
+  /* visibility: hidden; */
+  position: relative;
+  top: 20px;
+  /* animation: slide-top 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both; */
+  opacity: 1;
+  visibility: visible;
+  top: 0;
+}
+.LocationWrapper {
+  flex-basis: 100%;
+}
+.CurrentWeatherWrapper {
+  flex-basis: 100%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: auto 1fr;
+  margin: 20px 0;
+  grid-gap: 30px;
+}
+
+@media (min-width: 768px) {
+  .CurrentWeatherWrapper {
+    flex-basis: 50%;
+    padding-right: 10px;
+  }
+}
+@media (min-width: 1440px) {
+  .CurrentWeatherWrapper {
+    grid-template-columns: 1fr 1fr;
+    padding-right: 20px;
+  }
+}
+.WeatherIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 70px;
+  color: #ffffff;
+}
+@media (min-width: 768px) {
+  WeatherIcon {
+    font-size: 100px;
+    justify-content: flex-end;
+  }
+}
+@media (min-width: 1024px) {
+  WeatherIcon {
+    font-size: 120px;
+  }
+}
+@media (min-width: 1440px) {
+  WeatherIcon {
+    font-size: 140px;
+  }
+}
+.Temperature {
+  display: block;
+  font-size: 50px;
+  font-weight: 400;
+  color: #ffffff;
+}
+@media (min-width: 768px) {
+  Temperature {
+    font-size: 70px;
+  }
+}
+@media (min-width: 1024px) {
+  Temperature {
+    font-size: 90px;
+  }
+}
+@media (min-width: 1440px) {
+  Temperature {
+    font-size: 110px;
+  }
+}
+.WeatherDetailsWrapper {
+  flex-basis: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 0;
+  margin: 20px 0;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  align-self: flex-start;
+  /* display: -webkit-box; */
+}
+@media (min-width: 525px) {
+  WeatherDetailsWrapper {
+    flex-basis: 50%;
+  }
+}
+.WeatherDetail {
+  flex-basis: calc(100% / 3);
+  padding: 10px;
+}
+@media (min-width: 1024px) {
+  WeatherDetail {
+    padding: 20px 10px;
+  }
+}
+.ForecastWrapperOut {
+  flex-basis: 100%;
+  margin: 20px 0;
+  overflow: hidden;
+}
+.Forecast {
+  position: relative;
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scrollbar-color: lightgray #ffffff;
+  scrollbar-width: thin;
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+@media (min-width: 1024px) {
+  Forecast {
+    order: 4;
+  }
+}
+.SmallLabel {
+  color: #ffffff;
+  display: block;
+  font-weight: 600;
+  font-size: 15px;
+  text-align: left;
+  padding: 5px 0;
+}
+.SmallLabel::first-letter {
+  text-transform: uppercase;
+}
+@media (min-width: 768px) {
+  .SmallLabel {
+    font-size: 20px;
+  }
+}
+@media (min-width: 1024px) {
+  .SmallLabel {
+    font-size: 23px;
+  }
+}
+@media (min-width: 1440px) {
+  .SmallLabel {
+    font-size: 26px;
+  }
+}
+.BigLabel {
+  color: #ffffff;
+  display: block;
+  font-weight: 600;
+  font-size: 30px;
+  text-align: left;
+  padding: 5px 0;
+}
+.BigLabel::first-letter {
+  text-transform: uppercase;
+}
+@media (min-width: 768px) {
+  .BigLabel {
+    font-size: 37px;
+  }
+}
+@media (min-width: 1024px) {
+  .BigLabel {
+    font-size: 43px;
+  }
+}
+@media (min-width: 1440px) {
+  .BigLabel {
+    font-size: 52px;
+  }
+}
+.MediumLabel {
+  color: #ffffff;
+  display: block;
+  font-weight: 600;
+  font-size: 20px;
+  text-align: left;
+  padding: 5px 0;
+}
+.MediumLabel::first-letter {
+  text-transform: uppercase;
+}
+@media (min-width: 768px) {
+  .MediumLabel {
+    font-size: 23px;
+  }
+}
+@media (min-width: 1024px) {
+  .MediumLabel {
+    font-size: 26px;
+  }
+}
+@media (min-width: 1440px) {
+  .MediumLabel {
+    font-size: 29px;
+  }
+}
+.Text {
+  color: #ffffff;
+  display: block;
+  font-size: 12px;
+  text-align: left;
+  padding: 5px 0;
+}
+.Text::first-letter {
+  text-transform: uppercase;
+}
+@media (min-width: 768px) {
+  .Text {
+    font-size: 15px;
+  }
+}
+@media (min-width: 1024px) {
+  .Text {
+    font-size: 17px;
+  }
+}
+@media (min-width: 1440px) {
+  .Text {
+    font-size: 19px;
+  }
+}
+.ForecastWrapper {
+  flex-shrink: 0;
+  flex-basis: 90px;
+  padding: 10px;
+  margin: 0 5px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.ForecastWrapper:last-child {
+  margin-right: 0;
+}
+.ForecastWrapper:first-child {
+  margin-left: 0;
+}
+@media (min-width: 768px) {
+  .ForecastWrapper {
+    flex-basis: 110px;
+  }
+}
+@media (min-width: 1024px) {
+  .ForecastWrapper {
+    flex-basis: 125px;
+  }
+}
+@media (min-width: 1440px) {
+  .ForecastWrapper {
+    flex-basis: 140px;
+  }
+}
+.WeatherIcon {
+  display: block;
+  height: 50px;
+  width: 50px;
+  margin: 0 auto;
+}
+.TemperatureWrapper {
+  margin-left: auto;
 }
